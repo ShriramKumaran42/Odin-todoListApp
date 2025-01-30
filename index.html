@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+<script defer src="main.js"></script></head>
+<body>
+    <h1 id="title">Todo List</h1>
+    <div id="app">
+        <div id="proj">
+            <h1>Projects</h1>
+            <button id="pBtn">Add Project</button>
+            <div id="proj-list"></div>
+        </div>
+        <div id="todos">
+        </div>
+
+    </div>
+
+    <div id="modal-overlay"></div>
+
+    <div id="todo-form-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000;">
+        <form id="todo-form">
+            <input type="text" id="todo-title" placeholder="Title" required>
+            <textarea id="todo-description" placeholder="Description"></textarea>
+            <input type="date" id="todo-dueDate" required>
+            
+            <label>Priority:</label>
+            <div class="priority-container">
+                <label>
+                    <input type="radio" name="priority" value="High"> High
+                </label>
+                <label>
+                    <input type="radio" name="priority" value="Medium"> Medium
+                </label>
+                <label>
+                    <input type="radio" name="priority" value="Low"> Low
+                </label>
+            </div>
+            
+    
+            <button type="submit">Add</button>
+            <button type="button" id="close-form-btn">Close</button>
+        </form>
+    </div>
+    
+    
+    
+</body>
+</html>
