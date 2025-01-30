@@ -1,0 +1,291 @@
+/* body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(189, 251, 251);
+}
+#title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#app{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    height: 100vh;
+}
+#proj{
+    background-color: rgb(103, 101, 234);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+}
+#todos{
+    align-items: center;
+    background-color: rgb(178, 216, 250); 
+    border-radius: 25px;
+}
+
+#proj-list{
+    display: flex;
+    gap: 5px;
+} */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+
+}
+
+body {
+    background-color: rgb(189, 251, 251);
+    display: flex;
+    flex-direction: column;
+}
+
+#title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    display: flex;
+    gap: 20px;
+    height: 100vh;
+    
+}
+
+#proj {
+    width: 30%;
+    padding: 10px;
+    background-color: rgb(103, 101, 234);
+    border-radius: 25px;
+    padding: 15px;
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+#todos {
+    width: 70%;
+    padding: 10px;
+    background-color: rgb(178, 216, 250); 
+    border-radius: 25px;
+}
+
+.project-item {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+#pBtn {
+    display: block;
+    width: 150px; /* Set width */
+    margin: 20px auto; /* Center horizontally */
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #429cfd; /* Blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.add-task-btn {
+    display: block;
+    width: 200px; /* Set width */
+    margin: 20px auto; /* Center horizontally */
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #429cfd; /* Blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.add-task-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Button Click Effect */
+.add-task-btn:active {
+    background-color: #389929;
+    transform: scale(0.95); /* Slightly shrink when clicked */
+}
+
+.dlt-proj {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.dlt-proj:hover {
+    background-color: darkred;
+}
+
+.todo-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.todo-card.high {
+    background-color: lightcoral;
+}
+
+.todo-card.medium {
+    background-color: lightgoldenrodyellow;
+}
+
+.todo-card.low {
+    background-color: lightgreen;
+}
+
+#modal-overlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay */
+    backdrop-filter: blur(5px); /* Blurs the background */
+    z-index: 999; /* Below the modal but above other content */
+}
+
+#todo-form-container {
+    display: none; /* Hidden initially */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 243px;
+}
+
+.delete-todo-btn{
+    background: #ffffff;
+    color: #ff0019;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+
+}
+
+.delete-todo-btn:hover {
+    background-color: rgb(255, 0, 0);
+    color: aliceblue;
+}
+
+
+
+/* Style the priority selection container */
+.priority-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Properly style radio buttons */
+.priority-container input[type="radio"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Style labels to align properly */
+.priority-container label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#todo-form input,
+#todo-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#todo-form label {
+    font-weight: bold;
+}
+
+#todo-form input[type="radio"] {
+    margin-right: 5px;
+}
+
+#todo-form button[type="submit"] {
+    background: #6161e2;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#todo-form button[type="submit"]:hover {
+    background: #218838;
+}
+
+
+/* Close Button */
+#close-form-btn {
+    background: #d35c68;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#close-form-btn:hover {
+    background: #e90d23;
+}
+
+
+/* Responsive Design */
+/* @media (max-width: 768px) {
+    #app {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #proj, #todos {
+        width: 100%;
+    }
+} */
+
+
+
+
